@@ -112,6 +112,60 @@ def alunos():
     c_turma.place(x=450, y=160)
 
 
+
+    #função para escolher imagens
+    global imagem, imagem_string, l_imagem
+
+    def escolher_imagem():
+        global imagem, imagem_string, l_imagem
+        
+        imagem = fd.askopenfilename()
+        imagem_string = imagem
+
+        # Abrindo imagem
+        imagem = Image.open(imagem)
+        imagem = imagem.resize((130,130))
+        imagem = ImageTk.PhotoImage(imagem)
+        l_imagem = Label(frame_detalhes, image=imagem, bg=co1, fg=co4)
+        l_imagem.place(x=300, y=10)
+
+        botao_carregar['text'] = 'Alterar Imagem'
+
+    botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Imagem", width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Poppins 7'), bg=co1, fg=co0)
+    botao_carregar.place(x=300, y=160)
+
+
+    # Linha Separatória ------------------------------
+
+    l_linha = Label(frame_detalhes, relief=GROOVE, text='h', width=1, height=100, anchor=NW, font=('Poppins 1'), bg=co0, fg=co0)
+    l_linha.place(x=610, y=10)
+    l_linha = Label(frame_detalhes, relief=GROOVE, text='h', width=1, height=100, anchor=NW, font=('Poppins 1'), bg=co1, fg=co0)
+    l_linha.place(x=608, y=10)
+
+    # Procurar Aluno ---------------------------------
+
+    l_nome = Label(frame_detalhes, text="Procurar Aluno ", height=1, anchor=NW, font=('Poppins 9'), bg=co1, fg=co4)
+    l_nome.place(x=627, y=10)
+    e_nome_procurar = Entry(frame_detalhes, width=17, justify='center', relief="solid", font=('Poppins 9'))
+    e_nome_procurar.place(x=630, y=35)
+
+
+    ## Botoes ------------------------
+
+    botao_salvar = Button(frame_detalhes, anchor=CENTER, text="Salvar", width=9, overrelief=RIDGE, font=('Poppins 7 bold'), bg=co3, fg=co1)
+    botao_salvar.place(x=627, y=110)
+
+    botao_atualizar = Button(frame_detalhes, anchor=CENTER, text='Atualizar'.upper(), width=9, overrelief=RIDGE, font=('Poppins 7 bold'), bg=co6, fg=co1)
+    botao_atualizar.place(x=627, y=135)
+
+    botao_deletar = Button(frame_detalhes, anchor=CENTER, text='Deletar'.upper(), width=9, overrelief=RIDGE, font=('Poppins 7 bold'), bg=co7, fg=co1)
+    botao_deletar.place(x=627, y=160)
+
+    botao_ver = Button(frame_detalhes, anchor=CENTER, text='Ver'.upper(), width=9, overrelief=RIDGE, font=('Poppins 7 bold'), bg=co1, fg=co0)
+    botao_ver.place(x=727, y=160)
+
+
+
 # funcao para adicionar cursos e turmas
 def adicionar():
     # Criando frames para tabelas ----------
